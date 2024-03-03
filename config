@@ -4,7 +4,7 @@
 # $ man -k sway     # Find all manual pages related to sway
 # $ man -k xkb      # Find all manual pages related to X KeyBoard
 # $ man sway        # Display the default manual page for sway
-# $ man sway 5      # Display the manual page for sway(5)
+# $ man 5 sway      # Display the manual page for sway(5)
 
 # Mod4 = Home key
 set $mod Mod4
