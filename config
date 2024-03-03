@@ -135,6 +135,14 @@ bindsym $mod+d \
     -modes combi \
     -combi-modes drun#run
 
+# Take a screenshot
+bindsym $mod+Print \
+    exec grim \
+    -t png \
+    -g "$(slurp -d)" \
+    - \
+    | wl-copy -t image/png
+
 
 # ========== INPUT/OUTPUT CONFIGURATION ==========
 
