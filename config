@@ -135,7 +135,11 @@ bindsym $mod+d \
     -modes combi \
     -combi-modes drun#run
 
-# Take a screenshot
+# Lock screen.
+bindsym $mod+Backspace \
+    exec swaylock
+
+# Take a screenshot.
 bindsym $mod+Print \
     exec grim \
     -t png \
