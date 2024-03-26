@@ -103,11 +103,11 @@ bindsym $mod+g floating toggle
 # Switch focus between the tiling area and the floating area.
 bindsym $mod+h focus mode_toggle
 
-# Minimize the focused container. The container will move to the scratchpad.
-bindsym $mod+shift+minus move scratchpad
+# Minimize the focused container (move it to the scratchpad).
+bindsym $mod+m move scratchpad
 
-# Cycle through minimized containers in the scratchpad.
-bindsym $mod+minus scratchpad show
+# Show next minimized container in the scratchpad.
+bindsym $mod+n scratchpad show
 
 # Enter resize mode.
 bindsym $mod+r mode "resize"
