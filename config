@@ -1,10 +1,16 @@
 # File: ~/.config/sway/config
 #
 # Help:
-# $ man -k sway     # Find all manual pages related to sway
+# $ man -k sway     # Find all manual pages related to Sway
 # $ man -k xkb      # Find all manual pages related to X KeyBoard
-# $ man sway        # Display the default manual page for sway
+# $ man sway        # Display the default manual page for Sway
 # $ man 5 sway      # Display the manual page for sway(5)
+#
+# Additional software invoked by the shortcuts:
+# - wl-copy     - wayland clipboard terminal utilies
+# - foot        - terminal emulator
+# - rofi        - app launcher
+# - grim        - screenshot taker
 
 # Mod4 = Home key
 set $mod Mod4
@@ -18,10 +24,10 @@ floating_modifier $mod normal
 # ========== GENERAL HOTKEYS ==========
 
 # Reload the configuration file.
-bindsym $mod+Shift+c reload
+bindsym $mod+insert reload
 
 # Exit sway.
-bindsym $mod+Shift+Escape \
+bindsym $mod+shift+escape \
     exec swaynag \
     -t warning \
     -m 'Exit Wayland session?' \
@@ -29,28 +35,28 @@ bindsym $mod+Shift+Escape \
     'swaymsg exit'
 
 # Close window.
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 
 # ========== FOCUS HOTKEYS ==========
 
 # Move focus to nearby containers.
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+left focus left
+bindsym $mod+down focus down
+bindsym $mod+up focus up
+bindsym $mod+right focus right
 
 # Move focus to the parent container.
-bindsym $mod+a focus parent
+bindsym $mod+c focus parent
 
 # Move focus to the child container.
-bindsym $mod+z focus child
+bindsym $mod+x focus child
 
 # Move the focused window.
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+shift+left move left
+bindsym $mod+shift+down move down
+bindsym $mod+shift+up move up
+bindsym $mod+shift+right move right
 
 # Switch to workspace.
 bindsym $mod+1 workspace number 1
@@ -65,16 +71,16 @@ bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
 # Move the focused container to workspace.
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+0 move container to workspace number 10
 
 
 # ========== LAYOUT HOTKEYS ==========
@@ -85,20 +91,20 @@ bindsym $mod+v splitv
 
 # Change layout styles of the current container.
 bindsym $mod+s layout toggle split
-bindsym $mod+t layout tabbed
-bindsym $mod+y layout stacking
+bindsym $mod+d layout tabbed
+bindsym $mod+f layout stacking
 
 # Toggle the focused container between fullscreen and windowed mode.
-bindsym $mod+f fullscreen
+bindsym $mod+t fullscreen
 
 # Toggle the focused container between tiling and floating mode.
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+g floating toggle
 
 # Switch focus between the tiling area and the floating area.
-bindsym $mod+space focus mode_toggle
+bindsym $mod+h focus mode_toggle
 
 # Minimize the focused container. The container will move to the scratchpad.
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+shift+minus move scratchpad
 
 # Cycle through minimized containers in the scratchpad.
 bindsym $mod+minus scratchpad show
@@ -109,14 +115,14 @@ bindsym $mod+r mode "resize"
 mode "resize" {
     # Resize the window.
     # The arrow keys "drag" the bottom-right corner of the window.
-    bindsym Right resize grow   width  20px
-    bindsym Left  resize shrink width  20px
-    bindsym Down  resize grow   height 20px
-    bindsym Up    resize shrink height 20px
+    bindsym right resize grow   width  20px
+    bindsym left  resize shrink width  20px
+    bindsym down  resize grow   height 20px
+    bindsym up    resize shrink height 20px
 
     # Return to default mode.
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym return mode "default"
+    bindsym escape mode "default"
 }
 
 
@@ -125,10 +131,10 @@ mode "resize" {
 set $term foot
 
 # Open terminal.
-bindsym $mod+Return exec $term
+bindsym $mod+return exec $term
 
 # Open app launcher.
-bindsym $mod+d \
+bindsym $mod+space \
     exec rofi \
     -terminal '$term' \
     -show combi \
@@ -136,11 +142,11 @@ bindsym $mod+d \
     -combi-modes drun#run
 
 # Lock screen.
-bindsym $mod+Backspace \
+bindsym $mod+backspace \
     exec swaylock
 
 # Take a screenshot.
-bindsym $mod+Print \
+bindsym $mod+print \
     exec grim \
     -t png \
     -g "$(slurp -d)" \
@@ -163,11 +169,13 @@ input "1267:12548:ELAN1200:00_04F3:3104_Touchpad" {
 
 input type:keyboard {
     xkb_layout us,us(intl),ru,ua
-    xkb_options grp:caps_toggle
+    # LeftControl+RightControl switches layouts forwards
+    # RightControl+LeftControl switches layouts backwards
+    xkb_options grp:ctrls_toggle
 }
 
 
-# ========== ALLOW CONFIG OVERRIDES ==========
+# ========== SAVED FROM THE DEFAULT CONFIG FILE ==========
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
